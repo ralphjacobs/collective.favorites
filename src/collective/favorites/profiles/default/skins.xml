@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<object name="portal_skins" allow_any="False" cookie_persistence="False">
+
+ <object name="favorites_resources"
+    meta_type="Filesystem Directory View"
+    directory="collective.favorites:skins/favorites_resources"/>
+
+ <skin-path name="*">
+  <layer name="favorites_resources" insert-after="custom"/>
+ </skin-path>
+
+</object>

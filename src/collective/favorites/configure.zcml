@@ -2,10 +2,52 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.favorites">
 
   <five:registerPackage package="." initialize=".initialize" />
+
+  <i18n:registerTranslations directory="locales" />
+  <include package=".policies" />
+  <include package=".portlet" />
+
+  <adapter factory=".storage.FavoriteStorage" />
+
+  <browser:viewlet
+      for="*"
+      view="plone.app.layout.globals.interfaces.IViewView"
+      layer="collective.favorites.interfaces.IFavoritesLayer"
+      name="favorite.viewlet"
+      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+      class=".viewlet.SwitchFavorite"
+      permission="zope2.View"
+    />
+
+  <browser:page
+      for="*"
+      class=".actions.FavoriteActions"
+      attribute="add"
+      name="add-favorite"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="*"
+      class=".actions.FavoriteActions"
+      attribute="remove"
+      name="remove-favorite"
+      permission="zope2.View"
+      />
+
+  <cmf:registerDirectory
+      name="favorites_resources"/>
+
+  <browser:resource
+      name="collective.favorites.js"
+      file="resources/favorites.js" />
 
   <genericsetup:registerProfile
       name="default"
@@ -14,6 +56,7 @@
       description="Installs the collective.favorites package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+
   <!-- -*- extra stuff goes here -*- -->
-  
+
 </configure>

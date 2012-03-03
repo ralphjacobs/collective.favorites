@@ -1,0 +1,26 @@
+<div id="favorite-button" tal:condition="not:view/anonymous"
+     tal:define="template view/template"
+     i18n:domain="collective.favorites">
+  <a id="add-favorite"
+     title="Add to your favorites"
+     tal:condition="not:view/isfavorite"
+     tal:attributes="href string:${context/absolute_url}/add-favorite?view=${template}"
+     i18n:attributes="title">
+    <img class="favorite-on"
+         style="display: none;"
+         tal:attributes="src string:${view/portal_url}/favorite-on.png" />
+    <img class="favorite-off"
+         tal:attributes="src string:${view/portal_url}/favorite-off.png" />
+  </a>
+  <a id="remove-favorite"
+	 title="Remove from your favorites"
+	 tal:condition="view/isfavorite"
+	 tal:attributes="href string:${context/absolute_url}/remove-favorite?view=${template}"
+	 i18n:attributes="title">
+    <img class="favorite-on"
+         tal:attributes="src string:${view/portal_url}/favorite-on.png" />
+    <img class="favorite-off"
+         style="display: none;"
+         tal:attributes="src string:${view/portal_url}/favorite-off.png" />
+  </a>
+</div>

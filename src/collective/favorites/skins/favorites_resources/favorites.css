@@ -1,0 +1,11 @@
+#favorite-button{
+	float: right;
+}
+
+#favorite-button a{
+    text-decoration: none;
+}
+
+.portlet-favorites .portletItem a{
+	line-height: 2em;
+}

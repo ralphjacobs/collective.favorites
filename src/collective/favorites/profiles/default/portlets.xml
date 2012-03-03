@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<portlets
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+   i18n:domain="collective.favorites">
+
+ <!-- Portlet type registrations -->
+
+ <portlet
+   addview="collective.favorites.portlet"
+   title="Favorites portlet"
+   i18n:attributes="title"
+   description="A portlet that displays your favorite elements"
+   />
+
+</portlets>

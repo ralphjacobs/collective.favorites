@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.favorites">
+
+   <plone:portlet
+       name="collective.favorites.portlet"
+       interface=".favorites.IFavoritesPortlet"
+       assignment=".favorites.Assignment"
+       renderer=".favorites.Renderer"
+       addview=".favorites.AddForm"
+       />
+
+</configure>

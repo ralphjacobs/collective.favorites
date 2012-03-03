@@ -1,0 +1,52 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-03-03 09:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ../portlet/favorites.py:71
+msgid "Add Favorites Portlet"
+msgstr "Ajouter la portlet Favoris"
+
+#: ../switchfavorite.pt:4
+msgid "Add to your favorites"
+msgstr "Ajouter à vos favoris"
+
+#: ../portlet/favorites.py:35
+msgid "Favorites"
+msgstr "Mes favoris"
+
+#: ../portlet/favorites.py:28
+msgid "Favorites List"
+msgstr "Liste des favoris"
+
+#: ../profiles/default/portlets.xml
+msgid "Favorites portlet"
+msgstr "Portlet des favoris"
+
+#: ../switchfavorite.pt:15
+msgid "Remove from your favorites"
+msgstr "Retirer de mes favoris"
+
+#: ../actions.py:26
+msgid "The document has been added to your favorites"
+msgstr "Le document a été ajouté à vos favoris"
+
+#: ../actions.py:37
+msgid "The document has been removed from your favorites"
+msgstr "Le document a été retiré de vos favoris"
+
+#: ../portlet/favorites.py:72
+msgid "This portlet displays the documents you have selected as your favorites."
+msgstr "Cette portlet affiche les pages que vous avez sélectionnés comme favoris."
+
