@@ -1,4 +1,4 @@
-var favorites = {}
+var favorites = {};
 
 favorites.init = function(){
 	jq('#favorite-button').hover(function(){
