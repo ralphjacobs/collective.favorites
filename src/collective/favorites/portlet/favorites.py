@@ -13,6 +13,7 @@ from plone.app.portlets.portlets import base
 
 from collective.favorites import FavoritesMessageFactory as _
 from collective.favorites.interfaces import IFavoriteStorage, IFavoritesPolicy
+from plone.app.layout.navigation.root import getNavigationRootObject
 
 
 class IFavoritesPortlet(IPortletDataProvider):
@@ -54,7 +55,8 @@ class Renderer(base.Renderer):
         mtool = getToolByName(self.context, 'portal_membership')
         user_id = mtool.getAuthenticatedMember().getId()
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
-        favorites_list = IFavoriteStorage(portal).list_favorites(user_id)
+        site = getNavigationRootObject(self.context, portal)
+        favorites_list = IFavoriteStorage(site).list_favorites(user_id)
 
         favorites_infos = []
         for policy_name, policy in policies:
@@ -63,7 +65,6 @@ class Renderer(base.Renderer):
 
         favorites_infos.sort(key=lambda x: x['index'])
         return favorites_infos
-
 
 
 class AddForm(base.NullAddForm):

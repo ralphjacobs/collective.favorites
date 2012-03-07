@@ -1,12 +1,14 @@
-from DateTime import DateTime
+from datetime import datetime
 
 from Products.Five.browser import BrowserView
 
-from .interfaces import IFavoriteStorage
+from plone.uuid.interfaces import IUUID
 from Products.CMFCore.utils import getToolByName
 from Products.statusmessages.interfaces import IStatusMessage
 
 from collective.favorites import FavoritesMessageFactory as _
+from .interfaces import IFavoriteStorage
+from plone.app.layout.navigation.root import getNavigationRootObject
 
 
 class FavoriteActions(BrowserView):
@@ -16,11 +18,12 @@ class FavoriteActions(BrowserView):
         user = request.AUTHENTICATED_USER
         view = request.get('view', '')
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
-        IFavoriteStorage(portal).add_favorite(user.getId(),
-                id=self.context.UID(),
+        site = getNavigationRootObject(self.context, portal)
+        IFavoriteStorage(site).add_favorite(user.getId(),
+                id=IUUID(self.context),
                 type='uid',
                 view=view,
-                date=DateTime())
+                date=datetime.now())
 
         IStatusMessage(self.request).addStatusMessage(
                     _("The document has been added to your favorites"))
@@ -31,8 +34,9 @@ class FavoriteActions(BrowserView):
         user = request.AUTHENTICATED_USER
         view = request.get('view', '')
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
-        IFavoriteStorage(portal).remove_favorite(user.getId(),
-                                                 id=self.context.UID())
+        site = getNavigationRootObject(self.context, portal)
+        IFavoriteStorage(site).remove_favorite(user.getId(),
+                                                 id=IUUID(self.context))
         IStatusMessage(self.request).addStatusMessage(
                     _("The document has been removed from your favorites"))
         self.request.response.redirect(self.context.absolute_url() + '/' + view)

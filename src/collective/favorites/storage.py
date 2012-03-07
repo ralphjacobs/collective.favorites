@@ -1,3 +1,4 @@
+from BTrees.OOBTree import OOBTree
 from persistent.dict import PersistentDict
 from persistent.list import PersistentList
 
@@ -5,15 +6,16 @@ from zope.interface import implements
 from zope.component import adapts
 from zope.annotation.interfaces import IAnnotations
 
+from plone.app.layout.navigation.interfaces import INavigationRoot
+
 from .interfaces import IFavoriteStorage
-from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 
 
-FAVORITE_KEY = 'collective.favorite'
+FAVORITE_KEY = 'collective.favorites'
 
 class FavoriteStorage(object):
 
-    adapts(IPloneSiteRoot)
+    adapts(INavigationRoot)
     implements(IFavoriteStorage)
 
     def __init__(self, context):
@@ -22,7 +24,7 @@ class FavoriteStorage(object):
 
     def get_favorites(self):
         if not FAVORITE_KEY in self.annotations:
-            self.annotations[FAVORITE_KEY] = PersistentDict()
+            self.annotations[FAVORITE_KEY] = OOBTree()
 
         return self.annotations[FAVORITE_KEY]
 
@@ -62,4 +64,4 @@ class FavoriteStorage(object):
             return False
 
     def list_favorites(self, userid):
-        return list(self.annotations[FAVORITE_KEY][userid])
+        return list(self.get_favorites().get(userid, []))
