@@ -1,6 +1,6 @@
 <div id="favorite-button" tal:condition="not:view/anonymous"
-     tal:define="template view/template"
      i18n:domain="collective.favorites">
+  <tal:link define="template view/template">
   <a id="add-favorite"
      title="Add to your favorites"
      tal:condition="not:view/isfavorite"
@@ -23,4 +23,5 @@
          style="display: none;"
          tal:attributes="src string:${view/portal_url}/favorite-off.png" />
   </a>
+ </tal:link>
 </div>
