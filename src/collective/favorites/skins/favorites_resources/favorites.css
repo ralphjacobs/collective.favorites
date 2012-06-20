@@ -9,3 +9,7 @@
 .portlet-favorites .portletItem a{
 	line-height: 2em;
 }
+
+#favorite-button #favorite-button-text{
+	display: none;
+}
