@@ -1,5 +1,5 @@
 <div id="favorite-button" tal:condition="not:view/anonymous"
-     tal:define="template view/template"
+     tal:define="template view/template|view/__name__|string:"
      i18n:domain="collective.favorites">
   <span id="favorite-button-text" i18n:translate="">Add/remove as favorite:</span>
   <a id="add-favorite"
