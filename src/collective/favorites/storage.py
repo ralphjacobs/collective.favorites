@@ -19,7 +19,6 @@ class FavoriteStorage(object):
     implements(IFavoriteStorage)
 
     def __init__(self, context):
-        self.document = context
         self.annotations = IAnnotations(context)
 
     def get_favorites(self):
