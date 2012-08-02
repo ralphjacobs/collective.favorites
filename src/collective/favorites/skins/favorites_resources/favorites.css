@@ -1,5 +1,6 @@
 #favorite-button{
 	float: right;
+	margin: 0 0.5ex;
 }
 
 #favorite-button a{
