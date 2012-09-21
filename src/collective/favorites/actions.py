@@ -9,6 +9,7 @@ from Products.statusmessages.interfaces import IStatusMessage
 from collective.favorites import FavoritesMessageFactory as _
 from .interfaces import IFavoriteStorage
 from plone.app.layout.navigation.root import getNavigationRootObject
+from Products.CMFCore.interfaces._content import IFolderish
 
 
 class FavoriteActions(BrowserView):
@@ -25,9 +26,13 @@ class FavoriteActions(BrowserView):
                 view=view,
                 date=datetime.now())
 
-        IStatusMessage(self.request).addStatusMessage(
-                    _("The document has been added to your favorites"))
-        self.request.response.redirect(self.context.absolute_url() + '/' + view)
+        statusmsg = IStatusMessage(request)
+        if IFolderish.providedBy(self.context):
+            statusmsg.add(_("The folder has been added to your favorites"))
+        else:
+            statusmsg.add(_("The document has been added to your favorites"))
+
+        request.response.redirect(self.context.absolute_url() + '/' + view)
 
     def remove(self):
         request = self.request
@@ -37,6 +42,12 @@ class FavoriteActions(BrowserView):
         site = getNavigationRootObject(self.context, portal)
         IFavoriteStorage(site).remove_favorite(user.getId(),
                                                  id=IUUID(self.context))
-        IStatusMessage(self.request).addStatusMessage(
-                    _("The document has been removed from your favorites"))
-        self.request.response.redirect(self.context.absolute_url() + '/' + view)
+
+
+        statusmsg = IStatusMessage(request)
+        if IFolderish.providedBy(self.context):
+            statusmsg.add(_("The folder has been removed from your favorites"))
+        else:
+            statusmsg.add(_("The document has been removed from your favorites"))
+
+        request.response.redirect(self.context.absolute_url() + '/' + view)

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-06-20 15:34+0000\n"
+"POT-Creation-Date: 2012-09-21 20:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,13 +42,21 @@ msgstr "Portlet des favoris"
 msgid "Remove from your favorites"
 msgstr "Retirer de mes favoris"
 
-#: ../actions.py:29
+#: ../actions.py:33
 msgid "The document has been added to your favorites"
 msgstr "Le document a été ajouté à vos favoris"
 
-#: ../actions.py:41
+#: ../actions.py:51
 msgid "The document has been removed from your favorites"
 msgstr "Le document a été retiré de vos favoris"
+
+#: ../actions.py:31
+msgid "The folder has been added to your favorites"
+msgstr "Le dossier a été ajouté à vos favoris"
+
+#: ../actions.py:49
+msgid "The folder has been removed from your favorites"
+msgstr "Le dossier a été retiré de vos favoris"
 
 #: ../portlet/favorites.py:73
 msgid "This portlet displays the documents you have selected as your favorites."
