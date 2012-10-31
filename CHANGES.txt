@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1 (unreleased)
+1.1 (2012-10-31)
 ----------------
 
 - Info message is different if added/remove document is folderish or not.
