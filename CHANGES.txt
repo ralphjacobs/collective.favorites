@@ -4,7 +4,7 @@ Changelog
 1.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Added dutch translation [ralphjacobs]
 
 
 1.1 (2012-10-31)
